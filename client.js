@@ -74,6 +74,6 @@ exports.request = function(options, data, appId, appSecret, callback) {
         });
     });
     
-    req.write(data);
+    req.write(requestBody);
     req.end();
 }

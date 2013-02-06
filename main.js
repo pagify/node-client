@@ -3,7 +3,7 @@ var fs = require("fs");
 
 
 var options = {
-    "hostName": "http://127.0.0.1",
+    "hostName": "127.0.0.1",
     "port": 3000,
     "method": "",
     "method": "POST",
