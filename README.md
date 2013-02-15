@@ -75,7 +75,7 @@ To delete a template use ```deleteTemplate``` function call.
 ```javascript
 pagify.deleteTemplate(<template_id_as_string>, function(data) {
   template = data;
-}););
+});
 ```
 For example if the template id is ``` "71d620fc773a11e288cce006e61619ba" ```
 ```javascript
@@ -97,13 +97,13 @@ The API allows to generate a link to edit a specified template, without user act
 ```javascript
 pagify.editTemplate(<template_id_as_string>, function(data) {
   template = data;
-});)
+});
 ```
 For example
 ```javascript
 pagify.editTemplate("71d620fc773a11e288cce006e61619ba", function(data){
   template = data;
-})
+});
 ```
 If the template is valid a typical successful response will be as follows:
 ```javascript
@@ -135,7 +135,9 @@ data = {
                           [{"x": 10, "y": 30}, {"x": 20, "y": 30}, {"x": 80, "y": 30}],
                        ]
         }
-template = pagify.generatePDF("71d620fc773a11e288cce006e61619ba", data)
+template = pagify.generatePDF("71d620fc773a11e288cce006e61619ba", data,  function(da) {
+  template = da;
+});
 ```
 If the function call is successful the response is in binary format which can be saved as a PDF using ```File``` class.
 
