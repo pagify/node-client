@@ -5,12 +5,14 @@ var fs = require("fs");
 var options = {
     "hostName": "127.0.0.1",
     "port": 3000,
+    "path": "",
     "method": "",
-    "method": "POST",
     "acceptType": ""
 }
 var appId = "";
 var appSecret = "";
+
+exports.options = options;
 
 exports.init = function(id, secret) {
     appId = id;
@@ -18,41 +20,44 @@ exports.init = function(id, secret) {
 }
 
 exports.generatePDF = function (templateID, data, callback) {
+    if (templateID == null || templateID == "")
+        throw "Please supply a templateID";
     var requestData = {
-        "template_id" : templateID,
         "data": data
     };
-    options.path = "/api/generate_pdf";
-    options.acceptType = "application/pdf";
+    options.path = "/api/templates/" + templateID + "/generate_pdf";
+    options.method = "POST"
     client.request(options, requestData, appId, appSecret, callback);
 }
 
 exports.listTemplates = function (callback) {
-    options.path = "/api/list_templates";
+    options.path = "/api/templates";
     options.acceptType = "application/json";
+    options.method = "GET"
     client.request(options, {}, appId, appSecret, callback);
 }
 
 exports.newTemplate = function (callback) {
-    options.path = "/api/new_template";
+    options.path = "/api/templates";
     options.acceptType = "application/json";
+    options.method = "POST"
     client.request(options, {}, appId, appSecret, callback);
 }
 
 exports.editTemplate = function (templateID, callback) {
-    var requestData = {
-        "template_id" : templateID
-    };
-    options.path = "/api/edit_template";
+    if (templateID == null || templateID == "")
+        throw "Please supply a templateID";
+    options.path = "/api/templates/" + templateID + "/edit";
     options.acceptType = "application/json";
-    client.request(options, requestData, appId, appSecret, callback);
+    options.method = "GET"
+    client.request(options, {}, appId, appSecret, callback);
 }
 
 exports.deleteTemplate = function (templateID, callback) {
-    var requestData = {
-        "template_id" : templateID
-    };
-    options.path = "/api/delete_template";
+    if (templateID == null || templateID == "")
+        return false;
+    options.path = "/api/templates/" + templateID;
     options.acceptType = "application/json";
-    client.request(options, requestData, appId, appSecret, callback);
+    options.method = "DELETE"
+    client.request(options, {}, appId, appSecret, callback);
 }
