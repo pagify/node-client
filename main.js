@@ -37,7 +37,7 @@ exports.listTemplates = function (callback) {
     client.request(options, {}, appId, appSecret, callback);
 }
 
-exports.newTemplate = function (callback) {
+exports.createTemplate = function (callback) {
     options.path = "/api/templates";
     options.acceptType = "application/json";
     options.method = "POST"
