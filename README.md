@@ -5,7 +5,7 @@ Pagify is a web-based document design and generation service, that integrates ni
 
 For further information on uses of Pagify, please visit http://pagify.io
 
-This client library helps you to integrate Pagify with your ruby applications with minimum coding effort. Before using this library please ensure that you have a valid Pagify service account, and have noted down your API key and secret. Install the package using: 
+This client library helps you to integrate Pagify with your Node.JS applications with minimum coding effort. Before using this library please ensure that you have a valid Pagify service account, and have noted down your API key and secret. Install the package using: 
 ```javascript
 npm install pagify
 ```
@@ -135,7 +135,7 @@ data = {
                           [{"x": 10, "y": 30}, {"x": 20, "y": 30}, {"x": 80, "y": 30}],
                        ]
         }
-template = pagify.generatePDF("71d620fc773a11e288cce006e61619ba", data,  function(da) {
+pagify.generatePDF("71d620fc773a11e288cce006e61619ba", data,  function(da) {
   template = da;
 });
 ```
