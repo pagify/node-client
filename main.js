@@ -37,11 +37,16 @@ exports.listTemplates = function (callback) {
     client.request(options, {}, appId, appSecret, callback);
 }
 
-exports.createTemplate = function (callback) {
+exports.createTemplate = function (name, callback) {
+    if (name == null || name == "")
+        throw "Please supply a name";
+    var requestData = {
+        "template_name": name
+    };
     options.path = "/api/templates";
     options.acceptType = "application/json";
     options.method = "POST"
-    client.request(options, {}, appId, appSecret, callback);
+    client.request(options, requestData, appId, appSecret, callback);
 }
 
 exports.editTemplate = function (templateID, callback) {
