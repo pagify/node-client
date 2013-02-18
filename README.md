@@ -5,7 +5,7 @@ Pagify is a web-based document design and generation service, that integrates ni
 
 For further information on uses of Pagify, please visit http://pagify.io
 
-This client library helps you to integrate Pagify with your ruby applications with minimum coding effort. Before using this library please ensure that you have a valid Pagify service account, and have noted down your API key and secret. Install the package using: 
+This client library helps you to integrate Pagify with your Node.JS applications with minimum coding effort. Before using this library please ensure that you have a valid Pagify service account, and have noted down your API key and secret. Install the package using: 
 ```javascript
 npm install pagify
 ```
@@ -15,7 +15,7 @@ Using this library you can;
 - Create a new document template
 - Delete a document template
 - Generate link to edit a document template
-- Generate PDF using a document template
+- Generate PDF
 
 Before calling any action or function make sure to initialize the client using your api secret and api key:
 
@@ -35,7 +35,7 @@ pagify.listTemplates(function(data) {
   templates = data;
 });
 ```
-Here is the response for a successful call:
+Here is a sample response for a successful call:
 ```javascript
 {
   "statusCode": 200, 
@@ -58,7 +58,7 @@ pagify.createTemplate(function(data) {
   template = data;
 });
 ```
-Here goes a successful response:
+Here is a sample successful response:
 ```javascript
 {
   "statusCode": 200, 
@@ -67,7 +67,7 @@ Here goes a successful response:
 }
 ```
 The response contains the template id for the new template. 
->Note that this template is not ready to generate PDF as long as you do'nt edit and save it for the first time.
+>Note that this template is not ready to generate PDF as long as you don't edit and save it for the first time.
 
 3. Delete template:
 -------------------
@@ -135,7 +135,7 @@ data = {
                           [{"x": 10, "y": 30}, {"x": 20, "y": 30}, {"x": 80, "y": 30}],
                        ]
         }
-template = pagify.generatePDF("71d620fc773a11e288cce006e61619ba", data,  function(da) {
+pagify.generatePDF("71d620fc773a11e288cce006e61619ba", data,  function(da) {
   template = da;
 });
 ```
