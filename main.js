@@ -3,8 +3,8 @@ var fs = require("fs");
 
 
 var options = {
-    "hostName": "127.0.0.1",
-    "port": 3000,
+    "hostName": "alpha.pagify.io",
+    "port": 80,
     "path": "",
     "method": "",
     "acceptType": ""
