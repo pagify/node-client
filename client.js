@@ -61,16 +61,19 @@ exports.request = function(options, data, appId, appSecret, callback) {
     sign_request(http_options, appId, appSecret);
     
     var req = http.request(http_options, function(res) {
-        if (options.acceptType == "application/pdf")
-            res.setEncoding('binary');
-        
+        if (res.headers["content-transfer-encoding"]);
+            res.setEncoding(res.headers["content-transfer-encoding"]);
+            
         var body = '';
         res.on('data', function(chunk) {
             body += chunk;
         });
         
         res.on('end', function() {
-            callback(body);
+            if (!res.headers["content-transfer-encoding"])
+                callback(JSON.parse(body));
+            else
+                callback(body);
         });
     });
     
